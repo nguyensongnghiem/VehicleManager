@@ -1,14 +1,14 @@
-package repository.imp;
+package service.imp;
 
-import model.Car;
 import model.Vehicle;
-import repository.IVehicleRepo;
+import repository.imp.VehicleRepo;
+import service.IVehicleService;
 
 import java.util.ArrayList;
 
-public class CarRepo implements IVehicleRepo<Car> {
+public class VehicleService implements IVehicleService {
     @Override
-    public String add(Car car) {
+    public String add(Vehicle vehicle) {
         return null;
     }
 
@@ -23,7 +23,8 @@ public class CarRepo implements IVehicleRepo<Car> {
     }
 
     @Override
-    public ArrayList<Car> getAll() {
+    public ArrayList<Vehicle> getAll() {
         return null;
     }
 }
+

@@ -1,11 +1,14 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Car extends Vehicle{
     private byte noOfSeats;
     private String type;
-
+    public final static String CSV_SEPARATOR= ",";
+    public Car() {
+    }
     public Car(String plateNumber, String brand, String yearOfProduce, String owner, byte noOfSeats, String type) {
         super(plateNumber, brand, yearOfProduce, owner);
         this.noOfSeats = noOfSeats;
@@ -30,7 +33,7 @@ public class Car extends Vehicle{
 
     @Override
     public String toCsvLine() {
-        final String CSV_SEPARATOR= ",";
+
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(getPlateNumber());
         stringBuilder.append(CSV_SEPARATOR);
@@ -45,8 +48,20 @@ public class Car extends Vehicle{
         stringBuilder.append(getType());
         return stringBuilder.toString();
     }
-    public Car() {
-    }
+
+//    @Override
+//    public Car fromCsvLine(String csv) {
+//        Car car = new Car();
+//        String[] arr = csv.split(CSV_SEPARATOR);
+//        car.setPlateNumber(arr[0]);
+//        car.setBrand(arr[1]);
+//        car.setYearOfProduce(arr[2]);
+//        car.setOwner(arr[3]);
+//        car.setNoOfSeats(Byte.parseByte(arr[4]));
+//        car.setType(arr[5]);
+//        return car;
+//    }
+
 
     @Override
     public String toString() {
