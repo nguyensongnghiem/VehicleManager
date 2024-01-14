@@ -7,10 +7,9 @@ import java.util.ArrayList;
 
 public interface IVehicleService {
 
-    String add(Vehicle vehicle);
-    String delete(String plateNumber);
+    void add(Vehicle vehicle);
+    void delete(String plateNumber);
     Vehicle get(String plateNumber);
-
     ArrayList<Vehicle> getAll();
 
 }

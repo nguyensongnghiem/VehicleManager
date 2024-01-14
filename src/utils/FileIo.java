@@ -10,9 +10,7 @@ public class FileIo {
 
     public FileIo(String path) {
         this.path = path;
-
     }
-
     public void write(String str, boolean append) {
         File file = new File(path);
         try {
@@ -31,7 +29,6 @@ public class FileIo {
         } catch (IOException e) {
             System.out.println("File IO error .");
         }
-
     }
     public void writeList(ArrayList<String> strList, boolean append) {
         File file = new File(path);
@@ -55,8 +52,7 @@ public class FileIo {
         }
 
     }
-
-    public ArrayList<String> read() {
+    public ArrayList<String> readList() {
         File file = new File(path);
         ArrayList<String> result = new ArrayList<>();
         try {

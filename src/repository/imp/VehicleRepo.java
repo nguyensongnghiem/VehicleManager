@@ -1,5 +1,6 @@
 package repository.imp;
 
+import model.Manufacturer;
 import model.Vehicle;
 import repository.IVehicleFromCsv;
 import repository.IVehicleRepo;
@@ -10,7 +11,16 @@ import java.util.ArrayList;
 public class VehicleRepo implements IVehicleRepo<Vehicle> {
     private String path;
     private IVehicleFromCsv vehicleFromCsv;
-
+    public static ArrayList<Manufacturer> manufacturers;
+    static {
+        manufacturers.add(new Manufacturer("HSX-001","Yamaha","Nhật Bản"));
+        manufacturers.add(new Manufacturer("HSX-002","Honda","Nhật Bản"));
+        manufacturers.add(new Manufacturer("HSX-003","Dongfeng","Trung Quốc"));
+        manufacturers.add(new Manufacturer("HSX-004","Huyndai","Hàn Quốc"));
+        manufacturers.add(new Manufacturer("HSX-004","Ford","Mỹ"));
+        manufacturers.add(new Manufacturer("HSX-005","Toyota","Nhật Bản"));
+        manufacturers.add(new Manufacturer("HSX-006","Hino","Nhật Bản"));
+    }
 
     public VehicleRepo() {
     }
@@ -76,7 +86,7 @@ public class VehicleRepo implements IVehicleRepo<Vehicle> {
     public ArrayList<Vehicle> getAll() {
         FileIo file = new FileIo(path);
         ArrayList<Vehicle> list = new ArrayList<>();
-        ArrayList<String> arrCsv = file.read();
+        ArrayList<String> arrCsv = file.readList();
         for (int i = 0; i < arrCsv.size(); i++) {
                 Vehicle v = vehicleFromCsv.csvToVehicle(arrCsv.get(i));
                 list.add(v);
