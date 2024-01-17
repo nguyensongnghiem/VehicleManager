@@ -2,7 +2,7 @@ package repository.imp;
 
 import model.Manufacturer;
 import model.Vehicle;
-import repository.IVehicleFromCsv;
+import repository.IVehicleFactory;
 import repository.IVehicleRepo;
 import utils.FileIo;
 
@@ -10,24 +10,14 @@ import java.util.ArrayList;
 
 public class VehicleRepo implements IVehicleRepo<Vehicle> {
     private String path;
-    private IVehicleFromCsv vehicleFromCsv;
-    public static ArrayList<Manufacturer> manufacturers;
-    static {
-        manufacturers.add(new Manufacturer("HSX-001","Yamaha","Nhật Bản"));
-        manufacturers.add(new Manufacturer("HSX-002","Honda","Nhật Bản"));
-        manufacturers.add(new Manufacturer("HSX-003","Dongfeng","Trung Quốc"));
-        manufacturers.add(new Manufacturer("HSX-004","Huyndai","Hàn Quốc"));
-        manufacturers.add(new Manufacturer("HSX-004","Ford","Mỹ"));
-        manufacturers.add(new Manufacturer("HSX-005","Toyota","Nhật Bản"));
-        manufacturers.add(new Manufacturer("HSX-006","Hino","Nhật Bản"));
-    }
-
+    private IVehicleFactory vehicleFactory;
+    private static final String CSV_SEPARTOR = ",";
     public VehicleRepo() {
     }
 
-    public VehicleRepo(String path, IVehicleFromCsv vehicleFromCsv) {
+    public VehicleRepo(String path, IVehicleFactory vehicleFactory) {
         this.path = path;
-        this.vehicleFromCsv = vehicleFromCsv;
+        this.vehicleFactory = vehicleFactory;
     }
 
     public void setPath(String path) {
@@ -88,7 +78,7 @@ public class VehicleRepo implements IVehicleRepo<Vehicle> {
         ArrayList<Vehicle> list = new ArrayList<>();
         ArrayList<String> arrCsv = file.readList();
         for (int i = 0; i < arrCsv.size(); i++) {
-                Vehicle v = vehicleFromCsv.csvToVehicle(arrCsv.get(i));
+                Vehicle v = vehicleFactory.createVehicle(arrCsv.get(i).split(CSV_SEPARTOR));
                 list.add(v);
         }
         return list;

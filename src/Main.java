@@ -3,24 +3,23 @@ import model.Bike;
 import model.Car;
 import model.Van;
 import model.Vehicle;
-import repository.imp.BikeFromCsv;
-import repository.imp.CarFromCsv;
-import repository.imp.VanFromCsv;
+import repository.imp.BikeFactory;
+import repository.imp.CarFactory;
+import repository.imp.VanFactory;
 import repository.imp.VehicleRepo;
 import service.imp.VehicleService;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        VehicleService carService = new VehicleService(new VehicleRepo("src/data/carDB.csv", new CarFromCsv()));
+        VehicleService carService = new VehicleService(new VehicleRepo("src/data/carDB.csv", new CarFactory()));
         VehicleController carController = new VehicleController(carService);
-        VehicleService vanService = new VehicleService(new VehicleRepo("src/data/vanDB.csv", new VanFromCsv()));
+        VehicleService vanService = new VehicleService(new VehicleRepo("src/data/vanDB.csv", new VanFactory()));
         VehicleController vanController = new VehicleController(vanService);
-        VehicleService bikeService = new VehicleService(new VehicleRepo("src/data/bikeDB.csv", new BikeFromCsv()));
+        VehicleService bikeService = new VehicleService(new VehicleRepo("src/data/bikeDB.csv", new BikeFactory()));
         VehicleController bikeController = new VehicleController(bikeService);
         boolean flag ;
         boolean returnFlag;

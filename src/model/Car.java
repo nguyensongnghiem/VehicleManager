@@ -48,21 +48,6 @@ public class Car extends Vehicle{
         stringBuilder.append(getType());
         return stringBuilder.toString();
     }
-
-//    @Override
-//    public Car fromCsvLine(String csv) {
-//        Car car = new Car();
-//        String[] arr = csv.split(CSV_SEPARATOR);
-//        car.setPlateNumber(arr[0]);
-//        car.setBrand(arr[1]);
-//        car.setYearOfProduce(arr[2]);
-//        car.setOwner(arr[3]);
-//        car.setNoOfSeats(Byte.parseByte(arr[4]));
-//        car.setType(arr[5]);
-//        return car;
-//    }
-
-
     @Override
     public String toString() {
         return "Car{" +
