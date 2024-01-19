@@ -11,6 +11,7 @@ public class FileIo {
     public FileIo(String path) {
         this.path = path;
     }
+
     public void write(String str, boolean append) {
         File file = new File(path);
         try {
@@ -21,8 +22,8 @@ public class FileIo {
         }
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(file,append);
-        BufferedWriter bw = new BufferedWriter(fileWriter);
+            fileWriter = new FileWriter(file, append);
+            BufferedWriter bw = new BufferedWriter(fileWriter);
             bw.write(str);
             bw.newLine();
             bw.close();
@@ -30,6 +31,7 @@ public class FileIo {
             System.out.println("File IO error .");
         }
     }
+
     public void writeList(ArrayList<String> strList, boolean append) {
         File file = new File(path);
         try {
@@ -40,11 +42,11 @@ public class FileIo {
         }
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(file,append);
+            fileWriter = new FileWriter(file, append);
             BufferedWriter bw = new BufferedWriter(fileWriter);
             for (String str : strList) {
-            bw.write(str);
-            bw.newLine();
+                bw.write(str);
+                bw.newLine();
             }
             bw.close();
         } catch (IOException e) {
@@ -52,6 +54,7 @@ public class FileIo {
         }
 
     }
+
     public ArrayList<String> readList() {
         File file = new File(path);
         ArrayList<String> result = new ArrayList<>();
